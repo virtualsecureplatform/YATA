@@ -1,0 +1,13 @@
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/asconseed0.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/asconseed1.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/xoshiroseed.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/input.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/compress_output.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/compress_intermediate.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/bk.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/xoshiro.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/precise_output.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/precise_intermediate.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/bkraintt0.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/bkraintt1.tv .
+lxc file pull kmatsuoka-dev-malden/home/ubuntu/sources/Purple-Sapphire/build/bkraintt2.tv .
