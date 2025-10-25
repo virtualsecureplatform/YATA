@@ -1,0 +1,6 @@
+[submodule "YATA-RTL/thirdparties/TFHEpp"]
+	path = YATA-RTL/thirdparties/TFHEpp
+	url = https://github.com/virtualsecureplatform/TFHEpp.git
+[submodule "YATA-RTL/thirdparties/ascon-hardware"]
+	path = YATA-RTL/thirdparties/ascon-hardware
+	url = https://github.com/ascon/ascon-hardware.git

@@ -1,6 +1,0 @@
-[submodule "thirdparties/TFHEpp"]
-	path = thirdparties/TFHEpp
-	url = https://github.com/virtualsecureplatform/TFHEpp
-[submodule "thirdparties/ascon-hardware"]
-	path = thirdparties/ascon-hardware
-	url = https://github.com/ascon/ascon-hardware.git
