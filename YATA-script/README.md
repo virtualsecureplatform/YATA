@@ -1,3 +1,4 @@
-The main script is oneshottest.py
-Due to size limit, we omitted most of our measured data. If you need that, see our GitHub repository.
-https://github.com/virtualsecureplatform/YATA
+The main Test\&Measurement script is oneshottest.py
+The measured data is located in log/ directory.
+To reproduce Fig. 4 and 6 in our paper, please run measured_plot.py. 
+testvectors/ directory includes the fixed dataset (input ciphertexts and evaluation key) we used for performance measurement. 
