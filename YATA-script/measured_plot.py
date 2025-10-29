@@ -10,7 +10,7 @@ import numpy as np
 import math
 
 def power_plot(icnumber, figsize):
-  with open(icnumber+'_measured_data.pickle', mode='br') as fi:
+  with open('logs/'+icnumber+'_measured_data.pickle', mode='br') as fi:
     measured_data = pickle.load(fi)
 
   sns.set()
@@ -74,7 +74,7 @@ def shmoo_plot(chip_ids, figsize, hatch_fail='xx', hatch_mixed='', hatch_pass='/
     # Load measured data for each chip and store in a list
   chips_data = []
   for ic in chip_ids:
-      with open(f"{ic}_measured_data.pickle", mode='br') as fi:
+      with open(f"logs/{ic}_measured_data.pickle", mode='br') as fi:
           data = pickle.load(fi)
           chips_data.append(data)
   """
@@ -170,6 +170,5 @@ def shmoo_plot(chip_ids, figsize, hatch_fail='xx', hatch_mixed='', hatch_pass='/
   plt.savefig("shmoo_plot.jpg", dpi=300)
   plt.savefig("shmoo_plot.pdf")
 
-# power_plot("07", figsize=(7,4))
+power_plot("07", figsize=(7,4))
 shmoo_plot(["07","02","05","09","10"] , figsize=(7,4))
-# shmoo_plot(["07","02","05","10"] , figsize=(7,4))
