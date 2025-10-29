@@ -1,0 +1,109 @@
+Bootstrap: docker
+From: ubuntu:24.04
+
+%post
+    # Set non-interactive mode for apt
+    export DEBIAN_FRONTEND=noninteractive
+
+    # Update and install basic dependencies
+    apt-get update && apt-get install -y \
+        build-essential \
+        git \
+        wget \
+        curl \
+        software-properties-common \
+        apt-transport-https \
+        ca-certificates \
+        gnupg \
+        lsb-release
+
+    # Install Java (required for sbt/Scala)
+    apt-get install -y default-jre
+
+    # Install sbt
+    echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | tee /etc/apt/sources.list.d/sbt.list
+    echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | tee /etc/apt/sources.list.d/sbt_old.list
+    curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | apt-key add
+    apt-get update && apt-get install -y sbt
+
+    # Install Ninja, Clang, LLD, and CMake build dependencies
+    apt-get install -y \
+        ninja-build \
+        clang \
+        lld \
+        llvm \
+        libssl-dev
+
+    # Install newer CMake from Kitware (needed for CMAKE_LINKER_TYPE)
+    wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null
+    echo 'deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ noble main' | tee /etc/apt/sources.list.d/kitware.list >/dev/null
+    apt-get update
+    apt-get install -y cmake
+
+    # Install verilator dependencies and build verilator from source
+    apt-get install -y \
+        perl \
+        python3 \
+        make \
+        autoconf \
+        g++ \
+        flex \
+        bison \
+        ccache \
+        libgoogle-perftools-dev \
+        numactl \
+        perl-doc \
+        libfl2 \
+        libfl-dev \
+        zlib1g \
+        zlib1g-dev \
+        help2man
+
+    # Build verilator from source (version 5.x)
+    cd /tmp
+    git clone https://github.com/verilator/verilator
+    cd verilator
+    git checkout stable
+    autoconf
+    ./configure
+    make -j$(nproc)
+    make install
+    cd /
+    rm -rf /tmp/verilator
+
+    # Install TFHEpp dependencies
+    apt-get install -y \
+        libomp-dev \
+        libssl-dev
+
+    # Create runtime directory
+    mkdir -p /tmp/run
+    chmod 1777 /tmp/run
+
+    # Clean up
+    apt-get clean
+    rm -rf /var/lib/apt/lists/*
+
+%environment
+    export LC_ALL=C
+    export XDG_RUNTIME_DIR=/tmp/run
+    export TMPDIR=/tmp
+
+%runscript
+    cd chisel && sbt run && cd ..
+    cmake . -B build -G Ninja -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_C_COMPILER=clang -DCMAKE_LINKER_TYPE=LLD
+    cd build && ninja && ./chisel/src/test/cpp/cpptest
+
+%labels
+    Author YATA-RTL
+    Version v1.0
+
+%help
+    This container builds and runs the YATA-RTL project.
+    It includes:
+    - sbt (Scala Build Tool)
+    - verilator (Hardware simulation)
+    - CMake, Ninja, Clang, LLD (Build tools)
+    - TFHEpp dependencies (OpenMP, OpenSSL)
+
+    To run: singularity run yata-rtl.sif
