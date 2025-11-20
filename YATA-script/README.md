@@ -1,5 +1,21 @@
 The main Test\&Measurement script is `oneshottest.py`.
 
+## Dependencies
+
+Install required Python packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+Required packages:
+- gpiozero
+- matplotlib
+- numpy
+- pyvisa
+- seaborn
+- spidev
+
 `testvectors/` directory includes the fixed dataset (input ciphertexts and evaluation key) we used for performance measurement. 
 
 The measured data is located in `log/` directory.
