@@ -13,6 +13,10 @@ PCB and scripts are under MIT.
 # Quick Start For Artifact Reviewers
 Since reproducing our evaluation entirely requires physical access to our fabricated chip, we only hope to ensure the availability of our artifact. 
 
+## Cloning
+Because YATA-RTL includes subprojects, please clone with `--recursive` flag like:
+`git clone --recursive https://github.com/virtualsecureplatform/YATA.git`
+
 ## YATA-RTL
 For 'YATA-RTL', you can find our RTL codes under 'chise/src/main/'. 
 To compile our Chisel3 code to Verilog and run tests with Verilator, please install Apptainer or Singularity, then build and run yata-rtl.def. 
