@@ -15,6 +15,7 @@ Since reproducing our evaluation entirely requires physical access to our fabric
 
 ## Cloning
 Because YATA-RTL includes subprojects, please clone with `--recursive` flag like:
+
 `git clone --recursive https://github.com/virtualsecureplatform/YATA.git`
 
 ## YATA-RTL
