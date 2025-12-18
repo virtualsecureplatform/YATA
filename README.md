@@ -25,7 +25,7 @@ To compile our Chisel3 code to Verilog and run tests with Verilator, please inst
 ## YATA-PCB
 You can open the design using KiCAD 9 or later. We also provide the required footprint library under `Library.pretty` and the Gerber file under `jlcpcb`. We believe that if the reviewer can open the design and check the availability of libraries and gerber file, it is enough. 
 
-## YATA-scritpt
+## YATA-script
 Though the main script, `oneshottest.py`, is included,  this requires all the equipment we used to check executability. Hence, we believe just checking the availability is enough. 
 `testvectors` includes some data required for measurement using `oneshottest.py`, like input ciphertexts and evaluation keys. 
 
